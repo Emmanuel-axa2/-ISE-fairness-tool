@@ -1,0 +1,4 @@
+.venv/
+DNN/
+*.h5
+*.dylib

@@ -1,0 +1,9 @@
+dataset,IDI_ratio
+adult,0.407
+compas,0.574
+dutch,0.015
+german,0.524
+law,0.0
+credit,0.05
+crime,0.0
+kdd,0.133
