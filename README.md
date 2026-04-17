@@ -1,29 +1,44 @@
-# Requirements
-1.Install any versions of Python 3
-2.Install any required packages using pip in terminal, including pandas, numpy，tensorflow and scikit-learn 
+# ISE Fairness Tool — Boundary-Focused Sampling for AI Model Fairness Testing
 
-# How to run the code
-1. **Open the Python file with any IDE**:
-   - Launch your preferred Python IDE (e.g., PyCharm, VSCode, etc.).
-   - Open the `main.py` file.
+## Overview
+This repository contains two tools for automated AI model fairness testing developed as part of the Intelligent Software Engineering coursework at the University of Birmingham.
 
-2. **Change any parameters to adjust the experiment settings**:
-   - **Change the dataset file**:
-     - Update the dataset file path ('dataset/processed_adult.csv') in the code to point to the dataset.
-   - **Change the DNN model**:
-     - Replace the DNN model with the appropriate **serialized model** file.
-     - Ensure that the model is loaded using the correct method (e.g., `keras.models.load_model` for Keras models).
-     ```python
-     from keras.models import load_model
-     model = load_model('DNN/model_processed_adult.h5')
-     ```
-   - **Modify `load_and_preprocess_data` function**:
-     - In the `load_and_preprocess_data` function, update the **target variable** to match the target feature of the selected dataset.
-     - For example, if the adult dataset has a target variable named `Class-label`, change the function to load `label` as the target:
-       ```python
-       target = 'Class-label'  # Replace with your dataset's target column name
-       ```
+- `lab4_solution.py` — Baseline: Random Search
+- `solution.py` — Our Tool: Boundary-Focused Sampling (BFS)
 
-3. **Click 'Run' button**:
-   - Click the **Run** button in the IDE (typically a green play button).
-   - The results will be printed in the console or terminal window.
+Both tools find Individual Discriminatory Instances (IDIs) across 8 real-world datasets. An IDI is a pair of inputs identical except for a sensitive feature (e.g. race, gender) that receives different predictions from the model.
+
+## Setup
+
+1. Clone the repository:
+ git clone https://github.com/Emmanuel-axa2/-ISE-fairness-tool.git
+cd -ISE-fairness-tool
+2. Create and activate a virtual environment:
+/opt/homebrew/bin/python3.11 -m venv .venv
+source .venv/bin/activate
+3. Install dependencies: 
+pip install tensorflow-macos numpy pandas scikit-learn
+4. Download datasets and models from the lab GitHub and place them in the correct folders:
+https://github.com/ideas-labo/ISE/tree/main/lab4
+5.## Running the Tools
+Run the baseline:
+python lab4_solution.py
+Run our solution:
+python solution.py
+## Running the Tools
+
+File Structure:
+├── dataset/              # CSV datasets
+├── DNN/                  # Pretrained .h5 models
+├── lab4_solution.py      # Baseline Random Search
+├── solution.py           # Boundary-Focused Sampling
+├── results/              # Output CSV results
+├── requirements.pdf      # Dependencies and installation
+├── manual.pdf            # Usage manual
+└── replication.pdf       # Replication instructions
+
+## Documentation
+For full details see the PDF files in the root directory:
+- `requirements.pdf` — Dependencies and installation
+- `manual.pdf` — How to use the tools
+- `replication.pdf` — How to replicate reported results
